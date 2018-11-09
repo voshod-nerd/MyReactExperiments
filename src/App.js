@@ -1,25 +1,32 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import RigthSideNavProductPanel from './components/NavProductPanel/RightSideNavProductPanel'
+import {Switch,Route } from 'react-router-dom'
+import About from './components/About/About'
+import DoctorAndSertificate from './components/DoctorAndSertificate/DoctorAndSertificate'
+import NavBar from './components/Navbar/Navbar'
 
 class App extends Component {
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <NavBar></NavBar>
+        <div className="row">
+          <div className="col-md-4">
+            <RigthSideNavProductPanel />
+          </div>
+          <div className="col-md-8">
+            <Switch>
+              <Route exact path='/' component={About} />
+              
+              <Route path='/roster' component={ DoctorAndSertificate} />
+            
+            </Switch>
+
+          </div>
+        </div>
       </div>
     );
   }
